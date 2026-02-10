@@ -48,11 +48,11 @@ class WebAuthnController extends AbstractController
     }
 
     #[Route('/webauthn/login/start', methods: ['POST'])]
-public function loginStart(Request $request, WebAuthnHelper $helper): JsonResponse
-{
-    $credentialId = $request->getSession()->get('credential_id');
+    public function loginStart(Request $request, WebAuthnHelper $helper): JsonResponse
+    {
+        $credentialId = $request->getSession()->get('credential_id');
 
-    if (!$credentialId) {
+        if (!$credentialId) {
         return $this->json(['ok' => false, 'error' => 'no credential registered'], 400);
     }
 
